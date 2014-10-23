@@ -24,24 +24,19 @@ for (var i=0; i<containers.length; ++i) {
 
   // ポーズ切り替えのイベント登録
   container.addEventListener('click', function(event) {
-    video.paused ? video.play() : video.pause();
-    event.stopPropagation();
-  }, false);
-
-  bar.addEventListener('click', function(event) {
-    event.stopPropagation();
+    if (event.target == video) {
+      video.paused ? video.play() : video.pause();
+    }
   }, false);
 
   // フレーム操作用のイベント登録
   left.addEventListener('click', function(event) {
     video.pause();
     video.currentTime -= 1/60;
-    event.stopPropagation();
   }, false);
   right.addEventListener('click', function(event) {
     video.pause();
     video.currentTime += 1/60;
-    event.stopPropagation();
   }, false);
 
   // 全体フレーム数の設定
